@@ -1,0 +1,106 @@
+.container {
+  align-content: flex-start;
+  background: hsl(from var(--background) h s calc(l - 3));
+  display: grid;
+  gap: clamp(12px, 5dvw, 48px);
+  grid-template: auto / min(800px, 100%);
+  height: 100%;
+  justify-content: center;
+  padding: clamp(12px, 5dvw, 48px) clamp(12px, 2.5dvw, 24px);
+
+  [data-theme="dark"] & {
+    background: hsl(from var(--background) h s calc(l + 3));
+  }
+}
+
+.dropzone {
+  align-items: center;
+  background: var(--background);
+  border: 2px dashed hsl(from var(--background) h s calc(l - 42));
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  height: 200px;
+  justify-content: center;
+
+  [data-theme="dark"] & {
+    border-color: hsl(from var(--background) h s calc(l + 42));
+  }
+}
+
+.dropzoneText {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.section {
+  background: var(--background);
+  border: 1px solid hsl(from var(--background) h s calc(l - 42));
+  border-radius: 12px;
+
+  [data-theme="dark"] & {
+    border-color: hsl(from var(--background) h s calc(l + 42));
+  }
+}
+
+.h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: clamp(12px, 2.5dvw, 18px) clamp(12px, 2.5dvw, 18px) 0;
+}
+
+.item {
+  display: grid;
+  grid-template: auto / 100px 1fr;
+  padding: clamp(12px, 2.5dvw, 18px) 0;
+}
+
+.item:not(:first-child) {
+  border-top: 1px solid hsl(from var(--background) h s calc(l - 42));
+
+  [data-theme="dark"] & {
+    border-color: hsl(from var(--background) h s calc(l + 42));
+  }
+}
+
+.term,
+.description {
+  padding: clamp(12px, 2.5dvw, 18px);
+}
+
+.h3 {
+  color: hsl(from var(--foreground) h s calc(l + 12));
+
+  [data-theme="dark"] & {
+    color: hsl(from var(--foreground) h s calc(l - 12));
+  }
+}
+
+.description {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.canvasListContainer {
+  display: flex;
+  gap: clamp(12px, 2.5dvw, 18px);
+}
+
+.select {
+  appearance: auto;
+  font-size: 1.6rem;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  background: var(--foreground);
+  border-radius: 12px;
+  color: var(--background);
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding: 12px 24px;
+}

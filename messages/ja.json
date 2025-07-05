@@ -1,0 +1,16 @@
+{
+  "App": {
+    "download": "ダウンロード",
+    "dropzone": "ここに画像をドロップしてください",
+    "preview": "プレビュー",
+    "result": "結果",
+    "shapes": {
+      "circle": "円形",
+      "round": "角丸",
+      "square": "四角"
+    }
+  },
+  "Metadata": {
+    "description": "OGP Image Generator は、OGP画像・favicon・PWAアイコンを1枚の画像から一括生成できる無料ツールです。円形・角丸・背景色の調整にも対応しています。"
+  }
+}

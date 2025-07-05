@@ -1,0 +1,16 @@
+.header {
+  align-items: center;
+  border-bottom: 1px solid hsl(from var(--background) h s calc(l - 42));
+  display: flex;
+  gap: 12px;
+  height: 48px;
+  padding: 0 clamp(12px, 2.5dvw, 24px) 0 clamp(12px, 2.5dvw, 18px);
+
+  [data-theme="dark"] & {
+    border-color: hsl(from var(--background) h s calc(l + 42));
+  }
+}
+
+.h1 {
+  font-size: 2.1rem;
+}

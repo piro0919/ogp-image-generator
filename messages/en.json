@@ -1,0 +1,16 @@
+{
+  "App": {
+    "download": "Download",
+    "dropzone": "Drop your image here",
+    "preview": "Preview",
+    "result": "Result",
+    "shapes": {
+      "circle": "Circle",
+      "round": "Round",
+      "square": "Square"
+    }
+  },
+  "Metadata": {
+    "description": "OGP Image Generator is a free tool to generate OGP images, favicons, and PWA icons from a single image. Customize shape and background easily."
+  }
+}
