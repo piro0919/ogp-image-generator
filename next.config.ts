@@ -20,6 +20,14 @@ const nextConfig: NextConfig = withSerwist({
   images: {
     unoptimized: true,
   },
+  webpack: (config) => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      canvas: false,
+    };
+
+    return config;
+  },
 });
 const withNextIntl = createNextIntlPlugin();
 
