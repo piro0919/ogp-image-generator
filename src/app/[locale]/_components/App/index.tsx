@@ -186,9 +186,9 @@ export default function App(): React.JSX.Element {
                 </div>
                 <div className={styles.item}>
                   <dt className={styles.term}>
-                    <h3 className={styles.h3}>背景色</h3>
+                    <h3 className={styles.h3}>{t("background")}</h3>
                     <a
-                      data-tooltip-content="背景透過画像を使用している場合、背景色を設定してください"
+                      data-tooltip-content={t("tooltip.background")}
                       data-tooltip-id="my-tooltip"
                     >
                       <FcInfo size={12} />
@@ -213,7 +213,7 @@ export default function App(): React.JSX.Element {
                       setState={(value) => checkbox.setState(!!value)}
                       state={checkbox.state}
                     >
-                      背景透過
+                      {t("transparent")}
                     </Checkbox>
                     <select
                       onChange={(e) =>

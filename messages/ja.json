@@ -1,5 +1,6 @@
 {
   "App": {
+    "background": "背景色",
     "download": "ダウンロード",
     "dropzone": "ここに画像をドロップしてください",
     "preview": "プレビュー",
@@ -11,8 +12,10 @@
     },
     "tooltip": {
       "appleIcon": "表示崩れを避けるため、「四角」または「角丸」がおすすめです",
+      "background": "背景透過画像を使用している場合、背景色を設定してください",
       "icon": "表示崩れを避けるため、「四角」または「角丸」がおすすめです"
-    }
+    },
+    "transparent": "背景透過"
   },
   "Layout": {
     "copyAddToHomeScreenStep": "2) 「ホーム画面に追加」をタップします。",

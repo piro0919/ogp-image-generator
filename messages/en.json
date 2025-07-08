@@ -1,5 +1,6 @@
 {
   "App": {
+    "background": "BG Color",
     "download": "Download",
     "dropzone": "Drop your image here",
     "preview": "Preview",
@@ -11,8 +12,10 @@
     },
     "tooltip": {
       "appleIcon": "For best compatibility, we recommend using “Square” or “Round”.",
+      "background": "If you are using a transparent background image, please set the background color.",
       "icon": "For best compatibility, we recommend using “Square” or “Round”."
-    }
+    },
+    "transparent": "Transparent BG"
   },
   "Layout": {
     "copyAddToHomeScreenStep": "",

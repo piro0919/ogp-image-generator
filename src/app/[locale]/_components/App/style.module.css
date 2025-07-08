@@ -89,12 +89,12 @@
 }
 
 .checkbox {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 .select {
   appearance: auto;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 .buttonContainer {
@@ -113,4 +113,5 @@
 
 .tooltip {
   font-size: 1.2rem !important;
+  max-width: 75dvw;
 }
