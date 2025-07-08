@@ -8,7 +8,17 @@
       "circle": "Circle",
       "round": "Round",
       "square": "Square"
+    },
+    "tooltip": {
+      "appleIcon": "For best compatibility, we recommend using “Square” or “Round”.",
+      "icon": "For best compatibility, we recommend using “Square” or “Round”."
     }
+  },
+  "Layout": {
+    "copyAddToHomeScreenStep": "",
+    "copyDescription": "",
+    "copyShareStep": "",
+    "copyTitle": ""
   },
   "Metadata": {
     "description": "OGP Image Generator is a free tool to generate OGP images, favicons, and PWA icons from a single image. Customize shape and background easily."

@@ -8,6 +8,8 @@ import { Noto_Sans_JP } from "next/font/google";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Layout from "./_components/Layout";
+import "@djthoms/pretty-checkbox";
+import "react-tooltip/dist/react-tooltip.css";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],

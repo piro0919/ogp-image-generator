@@ -5,17 +5,19 @@ import { useWindowSize } from "usehooks-ts";
 import type Konva from "konva";
 
 type Props = {
+  backgroundColor?: string;
   shape?: "circle" | "round" | "square";
   src: string;
 };
 
 export default function KonvaCanvas({
+  backgroundColor = "transparent",
   shape = "square",
   src,
 }: Props): React.JSX.Element {
   const ref = useRef<Konva.Shape>(null);
   const { width } = useWindowSize();
-  const size = useMemo(() => (width > 768 ? 128 : 60), [width]);
+  const size = useMemo(() => Math.min(128, width / 5.5), [width]);
   const [image] = useImage(src);
 
   return (
@@ -50,6 +52,9 @@ export default function KonvaCanvas({
                 break;
               }
             }
+
+            ctx.fillStyle = backgroundColor;
+            ctx.fill();
 
             ctx.clip();
 

@@ -1,12 +1,18 @@
 "use client";
+import NoSSR from "@mpth/react-no-ssr";
+import { Sketch } from "@uiw/react-color";
 import clsx from "clsx";
 import { saveAs } from "file-saver";
 import JSZip from "jszip";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { Noto_Sans_JP } from "next/font/google";
+import { Checkbox, useCheckboxState } from "pretty-checkbox-react";
 import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { FcInfo } from "react-icons/fc";
+import { Tooltip } from "react-tooltip";
+import useImageStore from "../../useImageStore";
 import styles from "./style.module.css";
 
 const KonvaCanvas = dynamic(async () => import("../KonvaCanvas"), {
@@ -18,10 +24,13 @@ const notoSansJP = Noto_Sans_JP({
 
 export default function App(): React.JSX.Element {
   const t = useTranslations("App");
-  const [imageUrl, setImageUrl] = useState<null | string>(null);
-  const onDrop = useCallback(([acceptedFile]: File[]) => {
-    setImageUrl(URL.createObjectURL(acceptedFile));
-  }, []);
+  const { imageUrl, setImageUrl } = useImageStore();
+  const onDrop = useCallback(
+    ([acceptedFile]: File[]) => {
+      setImageUrl(URL.createObjectURL(acceptedFile));
+    },
+    [setImageUrl],
+  );
   const { getInputProps, getRootProps } = useDropzone({
     accept: {
       "image/*": [".png", ".jpg", ".jpeg", ".webp"],
@@ -38,6 +47,8 @@ export default function App(): React.JSX.Element {
   const [appleIconShape, setAppleIconShape] = useState<
     "circle" | "round" | "square"
   >("square");
+  const [hex, setHex] = useState("#2196f3");
+  const checkbox = useCheckboxState();
   const handleDownload = useCallback(async () => {
     if (!imageUrl) return;
 
@@ -97,6 +108,11 @@ export default function App(): React.JSX.Element {
         }
       }
 
+      if (!(name === "favicon" && checkbox.state)) {
+        ctx.fillStyle = hex;
+        ctx.fill();
+      }
+
       ctx.clip();
 
       const aspectRatio = img.width / img.height;
@@ -134,103 +150,152 @@ export default function App(): React.JSX.Element {
     const content = await zip.generateAsync({ type: "blob" });
 
     saveAs(content, "icons.zip");
-  }, [appleIconShape, faviconShape, iconShape, imageUrl]);
+  }, [appleIconShape, faviconShape, hex, iconShape, imageUrl, checkbox.state]);
 
   return (
-    <div className={styles.container}>
-      <div {...getRootProps()} className={styles.dropzone}>
-        <input {...getInputProps()} />
-        <p className={styles.dropzoneText}>{t("dropzone")}</p>
+    <>
+      <div className={styles.container}>
+        <div {...getRootProps()} className={styles.dropzone}>
+          <input {...getInputProps()} />
+          <p className={styles.dropzoneText}>{t("dropzone")}</p>
+        </div>
+        {imageUrl ? (
+          <NoSSR>
+            <section className={styles.section}>
+              <h2 className={styles.h2}>{t("result")}</h2>
+              <dl>
+                <div className={styles.item}>
+                  <dt className={styles.term}>
+                    <h3 className={styles.h3}>{t("preview")}</h3>
+                  </dt>
+                  <dd className={styles.description}>
+                    <div className={styles.canvasListContainer}>
+                      <KonvaCanvas backgroundColor={hex} src={imageUrl} />
+                      <KonvaCanvas
+                        backgroundColor={hex}
+                        shape="round"
+                        src={imageUrl}
+                      />
+                      <KonvaCanvas
+                        backgroundColor={hex}
+                        shape="circle"
+                        src={imageUrl}
+                      />
+                    </div>
+                  </dd>
+                </div>
+                <div className={styles.item}>
+                  <dt className={styles.term}>
+                    <h3 className={styles.h3}>背景色</h3>
+                    <a
+                      data-tooltip-content="背景透過画像を使用している場合、背景色を設定してください"
+                      data-tooltip-id="my-tooltip"
+                    >
+                      <FcInfo size={12} />
+                    </a>
+                  </dt>
+                  <dd className={styles.description}>
+                    <Sketch
+                      color={hex}
+                      disableAlpha={true}
+                      onChange={(color) => setHex(color.hex)}
+                    />
+                  </dd>
+                </div>
+                <div className={styles.item}>
+                  <dt className={styles.term}>
+                    <h3 className={styles.h3}>favicon</h3>
+                  </dt>
+                  <dd className={styles.description}>
+                    <Checkbox
+                      className={styles.checkbox}
+                      onChange={checkbox.onChange}
+                      setState={(value) => checkbox.setState(!!value)}
+                      state={checkbox.state}
+                    >
+                      背景透過
+                    </Checkbox>
+                    <select
+                      onChange={(e) =>
+                        setFaviconShape(
+                          e.target.value as "circle" | "round" | "square",
+                        )
+                      }
+                      className={styles.select}
+                      value={faviconShape}
+                    >
+                      <option value="square">{t("shapes.square")}</option>
+                      <option value="round">{t("shapes.round")}</option>
+                      <option value="circle">{t("shapes.circle")}</option>
+                    </select>
+                  </dd>
+                </div>
+                <div className={styles.item}>
+                  <dt className={styles.term}>
+                    <h3 className={styles.h3}>icon</h3>
+                    <a
+                      data-tooltip-content={t("tooltip.icon")}
+                      data-tooltip-id="my-tooltip"
+                    >
+                      <FcInfo size={12} />
+                    </a>
+                  </dt>
+                  <dd className={styles.description}>
+                    <select
+                      onChange={(e) =>
+                        setIconShape(
+                          e.target.value as "circle" | "round" | "square",
+                        )
+                      }
+                      className={styles.select}
+                      value={iconShape}
+                    >
+                      <option value="square">{t("shapes.square")}</option>
+                      <option value="round">{t("shapes.round")}</option>
+                      <option value="circle">{t("shapes.circle")}</option>
+                    </select>
+                  </dd>
+                </div>
+                <div className={styles.item}>
+                  <dt className={styles.term}>
+                    <h3 className={styles.h3}>apple-icon</h3>
+                    <a
+                      data-tooltip-content={t("tooltip.appleIcon")}
+                      data-tooltip-id="my-tooltip"
+                    >
+                      <FcInfo size={12} />
+                    </a>
+                  </dt>
+                  <dd className={styles.description}>
+                    <select
+                      onChange={(e) =>
+                        setAppleIconShape(
+                          e.target.value as "circle" | "round" | "square",
+                        )
+                      }
+                      className={styles.select}
+                      value={appleIconShape}
+                    >
+                      <option value="square">{t("shapes.square")}</option>
+                      <option value="round">{t("shapes.round")}</option>
+                      <option value="circle">{t("shapes.circle")}</option>
+                    </select>
+                  </dd>
+                </div>
+              </dl>
+            </section>
+            <div className={styles.buttonContainer}>
+              <button
+                className={clsx(styles.button, notoSansJP.className)}
+                onClick={() => void handleDownload()}
+              >
+                {t("download")}
+              </button>
+            </div>
+          </NoSSR>
+        ) : null}
       </div>
-      {imageUrl ? (
-        <>
-          <section className={styles.section}>
-            <h2 className={styles.h2}>{t("result")}</h2>
-            <dl>
-              <div className={styles.item}>
-                <dt className={styles.term}>
-                  <h3 className={styles.h3}>{t("preview")}</h3>
-                </dt>
-                <dd className={styles.description}>
-                  <div className={styles.canvasListContainer}>
-                    <KonvaCanvas src={imageUrl} />
-                    <KonvaCanvas shape="round" src={imageUrl} />
-                    <KonvaCanvas shape="circle" src={imageUrl} />
-                  </div>
-                </dd>
-              </div>
-              <div className={styles.item}>
-                <dt className={styles.term}>
-                  <h3 className={styles.h3}>favicon</h3>
-                </dt>
-                <dd className={styles.description}>
-                  <select
-                    onChange={(e) =>
-                      setFaviconShape(
-                        e.target.value as "circle" | "round" | "square",
-                      )
-                    }
-                    className={styles.select}
-                    value={faviconShape}
-                  >
-                    <option value="square">{t("shapes.square")}</option>
-                    <option value="round">{t("shapes.round")}</option>
-                    <option value="circle">{t("shapes.circle")}</option>
-                  </select>
-                </dd>
-              </div>
-              <div className={styles.item}>
-                <dt className={styles.term}>
-                  <h3 className={styles.h3}>icon</h3>
-                </dt>
-                <dd className={styles.description}>
-                  <select
-                    onChange={(e) =>
-                      setIconShape(
-                        e.target.value as "circle" | "round" | "square",
-                      )
-                    }
-                    className={styles.select}
-                    value={iconShape}
-                  >
-                    <option value="square">{t("shapes.square")}</option>
-                    <option value="round">{t("shapes.round")}</option>
-                    <option value="circle">{t("shapes.circle")}</option>
-                  </select>
-                </dd>
-              </div>
-              <div className={styles.item}>
-                <dt className={styles.term}>
-                  <h3 className={styles.h3}>apple-icon</h3>
-                </dt>
-                <dd className={styles.description}>
-                  <select
-                    onChange={(e) =>
-                      setAppleIconShape(
-                        e.target.value as "circle" | "round" | "square",
-                      )
-                    }
-                    className={styles.select}
-                    value={appleIconShape}
-                  >
-                    <option value="square">{t("shapes.square")}</option>
-                    <option value="round">{t("shapes.round")}</option>
-                    <option value="circle">{t("shapes.circle")}</option>
-                  </select>
-                </dd>
-              </div>
-            </dl>
-          </section>
-          <div className={styles.buttonContainer}>
-            <button
-              className={clsx(styles.button, notoSansJP.className)}
-              onClick={() => void handleDownload()}
-            >
-              {t("download")}
-            </button>
-          </div>
-        </>
-      ) : null}
-    </div>
+      <Tooltip className={styles.tooltip} id="my-tooltip" />
+    </>
   );
 }

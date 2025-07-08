@@ -51,8 +51,8 @@
 
 .item {
   display: grid;
-  grid-template: auto / 100px 1fr;
-  padding: clamp(12px, 2.5dvw, 18px) 0;
+  grid-template: auto / 84px 1fr;
+  padding: clamp(12px, 2.5dvw, 18px);
 }
 
 .item:not(:first-child) {
@@ -63,9 +63,10 @@
   }
 }
 
-.term,
-.description {
-  padding: clamp(12px, 2.5dvw, 18px);
+.term {
+  align-items: center;
+  display: flex;
+  gap: 6px;
 }
 
 .h3 {
@@ -77,6 +78,7 @@
 }
 
 .description {
+  align-items: center;
   display: flex;
   justify-content: flex-end;
 }
@@ -84,6 +86,10 @@
 .canvasListContainer {
   display: flex;
   gap: clamp(12px, 2.5dvw, 18px);
+}
+
+.checkbox {
+  font-size: 1.6rem;
 }
 
 .select {
@@ -103,4 +109,8 @@
   font-size: 1.6rem;
   font-weight: 700;
   padding: 12px 24px;
+}
+
+.tooltip {
+  font-size: 1.2rem !important;
 }
