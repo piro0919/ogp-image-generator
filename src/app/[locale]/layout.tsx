@@ -39,6 +39,7 @@ export async function generateMetadata({
     formatDetection: {
       telephone: false,
     },
+    metadataBase: new URL("https://ogpimggen.kkweb.io"),
     openGraph: {
       description: APP_DESCRIPTION,
       siteName: APP_NAME,
