@@ -47,3 +47,6 @@ public/swe-worker*
 # sitemap
 public/sitemap*
 public/robots.txt
+
+# Lighthouse CI reports
+.lighthouseci
