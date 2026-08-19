@@ -55,7 +55,7 @@ export async function generateMetadata({
       template: APP_TITLE_TEMPLATE,
     },
     twitter: {
-      card: "summary" as const,
+      card: "summary_large_image" as const,
       description: APP_DESCRIPTION,
       title: {
         default: APP_DEFAULT_TITLE,
