@@ -13,6 +13,13 @@ const withSerwist = withSerwistInit({
 });
 const nextConfig: NextConfig = withSerwist({
   /* config options here */
+  // OG 画像の背景 PNG は process.cwd() 経由で読むため、静的解析では追跡されない。
+  // 明示しないとサーバーレス関数のバンドルから落ちて ENOENT になる。
+  outputFileTracingIncludes: {
+    // キーも値も glob として解釈されるため、[locale] はブラケット記法と
+    // 衝突する。ワイルドカードで書く。
+    "/*/opengraph-image": ["./src/app/*/opengraph-background.png"],
+  },
   experimental: {
     typedEnv: true,
     // typedRoutes: true,
