@@ -27,8 +27,20 @@ export async function generateMetadata({
   const APP_DEFAULT_TITLE = "OGP Image Generator";
   const APP_TITLE_TEMPLATE = "%s - OGP Image Generator";
   const APP_DESCRIPTION = t("description");
+  const path = locale === routing.defaultLocale ? "/" : `/${locale}`;
 
   return {
+    // localePrefix が as-needed なので、既定ロケールだけ接頭辞が付かない。
+    // canonical と hreflang が無いと en と ja が重複ページ扱いになる。
+    alternates: {
+      canonical: path,
+      languages: Object.fromEntries(
+        routing.locales.map((one) => [
+          one,
+          one === routing.defaultLocale ? "/" : `/${one}`,
+        ]),
+      ),
+    },
     appleWebApp: {
       capable: true,
       statusBarStyle: "default" as const,
@@ -49,6 +61,7 @@ export async function generateMetadata({
         template: APP_TITLE_TEMPLATE,
       },
       type: "website" as const,
+      url: path,
     },
     title: {
       default: APP_DEFAULT_TITLE,
