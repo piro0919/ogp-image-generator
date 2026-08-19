@@ -1,7 +1,7 @@
 "use client";
 import NoSSR from "@mpth/react-no-ssr";
 import clsx from "clsx";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { Nunito_Sans } from "next/font/google";
 import { FaMoon, FaSun } from "react-icons/fa";
@@ -18,6 +18,7 @@ const nunitoSans = Nunito_Sans({
 
 export default function Header(): React.JSX.Element {
   const locale = useLocale();
+  const t = useTranslations("Header");
   const pathname = usePathname();
   const router = useRouter();
   const { setTheme, theme } = useTheme();
@@ -37,6 +38,7 @@ export default function Header(): React.JSX.Element {
       <Spacer grow={1} />
       {enabledPwa && !isPwa ? (
         <button
+          aria-label={t("install")}
           className={styles.button}
           disabled={!canInstallprompt || appinstalled}
           onClick={showInstallPrompt}
@@ -51,6 +53,7 @@ export default function Header(): React.JSX.Element {
               locale: "ja",
             })
           }
+          aria-label={t("switchToJapanese")}
         >
           <GiEarthAmerica size={24} />
         </button>
@@ -61,17 +64,18 @@ export default function Header(): React.JSX.Element {
               locale: "en",
             })
           }
+          aria-label={t("switchToEnglish")}
         >
           <GiJapan size={24} />
         </button>
       )}
       <NoSSR>
         {theme === "dark" ? (
-          <button onClick={() => setTheme("light")}>
+          <button aria-label={t("lightMode")} onClick={() => setTheme("light")}>
             <FaMoon size={24} />
           </button>
         ) : (
-          <button onClick={() => setTheme("dark")}>
+          <button aria-label={t("darkMode")} onClick={() => setTheme("dark")}>
             <FaSun size={24} />
           </button>
         )}

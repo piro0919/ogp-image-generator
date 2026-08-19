@@ -15,7 +15,15 @@
       "background": "If you are using a transparent background image, please set the background color.",
       "icon": "For best compatibility, we recommend using “Square” or “Round”."
     },
-    "transparent": "Transparent BG"
+    "transparent": "Transparent BG",
+    "fileInput": "Choose an image file"
+  },
+  "Header": {
+    "install": "Install the app",
+    "switchToJapanese": "Switch to Japanese",
+    "switchToEnglish": "Switch to English",
+    "lightMode": "Switch to the light theme",
+    "darkMode": "Switch to the dark theme"
   },
   "Layout": {
     "copyAddToHomeScreenStep": "",

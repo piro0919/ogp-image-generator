@@ -156,7 +156,7 @@ export default function App(): React.JSX.Element {
     <>
       <div className={styles.container}>
         <div {...getRootProps()} className={styles.dropzone}>
-          <input {...getInputProps()} />
+          <input aria-label={t("fileInput")} {...getInputProps()} />
           <p className={styles.dropzoneText}>{t("dropzone")}</p>
         </div>
         {imageUrl ? (

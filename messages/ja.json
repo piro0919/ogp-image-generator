@@ -15,7 +15,15 @@
       "background": "背景透過画像を使用している場合、背景色を設定してください",
       "icon": "表示崩れを避けるため、「四角」または「角丸」がおすすめです"
     },
-    "transparent": "背景透過"
+    "transparent": "背景透過",
+    "fileInput": "画像ファイルを選ぶ"
+  },
+  "Header": {
+    "install": "アプリをインストール",
+    "switchToJapanese": "日本語に切り替える",
+    "switchToEnglish": "英語に切り替える",
+    "lightMode": "明るい配色に切り替える",
+    "darkMode": "暗い配色に切り替える"
   },
   "Layout": {
     "copyAddToHomeScreenStep": "2) 「ホーム画面に追加」をタップします。",
