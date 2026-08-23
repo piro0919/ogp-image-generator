@@ -18,7 +18,10 @@ const nextConfig: NextConfig = withSerwist({
   outputFileTracingIncludes: {
     // キーも値も glob として解釈されるため、[locale] はブラケット記法と
     // 衝突する。ワイルドカードで書く。
-    "/*/opengraph-image": ["./src/app/*/opengraph-background.png"],
+    "/*/opengraph-image": [
+      "./src/app/*/opengraph-background.png",
+      "./assets/*.ttf",
+    ],
   },
   experimental: {
     typedEnv: true,

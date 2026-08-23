@@ -8,6 +8,12 @@ import { ThemeProvider } from "next-themes";
 import { Noto_Sans_JP } from "next/font/google";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import {
+  languageAlternates,
+  localePath,
+  ogAlternateLocales,
+  ogLocale,
+} from "@/i18n/urls";
 import Layout from "./_components/Layout";
 import "@djthoms/pretty-checkbox";
 import "react-tooltip/dist/react-tooltip.css";
@@ -27,19 +33,14 @@ export async function generateMetadata({
   const APP_DEFAULT_TITLE = "OGP Image Generator";
   const APP_TITLE_TEMPLATE = "%s - OGP Image Generator";
   const APP_DESCRIPTION = t("description");
-  const path = locale === routing.defaultLocale ? "/" : `/${locale}`;
+  const path = localePath(locale);
 
   return {
     // localePrefix が as-needed なので、既定ロケールだけ接頭辞が付かない。
     // canonical と hreflang が無いと en と ja が重複ページ扱いになる。
     alternates: {
       canonical: path,
-      languages: Object.fromEntries(
-        routing.locales.map((one) => [
-          one,
-          one === routing.defaultLocale ? "/" : `/${one}`,
-        ]),
-      ),
+      languages: languageAlternates(),
     },
     appleWebApp: {
       capable: true,
@@ -54,7 +55,9 @@ export async function generateMetadata({
     },
     metadataBase: new URL("https://ogpimggen.kkweb.io"),
     openGraph: {
+      alternateLocale: ogAlternateLocales(locale),
       description: APP_DESCRIPTION,
+      locale: ogLocale(locale),
       siteName: APP_NAME,
       title: {
         default: APP_DEFAULT_TITLE,

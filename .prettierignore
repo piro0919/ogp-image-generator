@@ -7,6 +7,7 @@ coverage
 .husky
 .lefthook
 *.woff2
+*.ttf
 public
 _static
 favicon.ico

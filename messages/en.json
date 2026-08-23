@@ -33,5 +33,8 @@
   },
   "Metadata": {
     "description": "OGP Image Generator is a free tool to generate OGP images, favicons, and PWA icons from a single image. Customize shape and background easily."
+  },
+  "OgImage": {
+    "tagline": "Make social preview images in your browser."
   }
 }

@@ -33,5 +33,8 @@
   },
   "Metadata": {
     "description": "OGP Image Generator は、OGP画像・favicon・PWAアイコンを1枚の画像から一括生成できる無料ツールです。円形・角丸・背景色の調整にも対応しています。"
+  },
+  "OgImage": {
+    "tagline": "OGP画像もアイコンもブラウザだけで作る"
   }
 }
