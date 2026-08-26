@@ -4,7 +4,7 @@
 
 Customize shape and background easily.
 
-[🔗 Live Site](https://ogp-image-generator-kkweb.vercel.app)
+[🔗 Live Site](https://ogpimggen.kkweb.io)
 
 ## ✨ Features
 
