@@ -25,3 +25,7 @@ Customize shape and background easily.
 npm install
 npm run dev
 ```
+
+## 📄 License
+
+MIT
