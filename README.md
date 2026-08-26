@@ -22,6 +22,6 @@ Customize shape and background easily.
 ## 🚀 Development
 
 ```bash
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
