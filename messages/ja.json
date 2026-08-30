@@ -1,4 +1,18 @@
 {
+  "About": {
+    "title": "このツールについて",
+    "summary": "画像を1枚ドロップすると、favicon と PWA 用のアイコンをまとめて作り、icons.zip としてダウンロードできます。変換はすべてブラウザの中で行うので、画像はどこにも送信されません。",
+    "filesTitle": "作られるファイル",
+    "file1": "favicon.ico（256px）",
+    "file2": "icon-192x192.png",
+    "file3": "icon-512x512.png",
+    "file4": "apple-icon.png（180px）",
+    "stepsTitle": "使い方",
+    "step1": "正方形に近い画像を1枚ドロップします。縦横比が違う画像は中央で正方形に切り取られます。",
+    "step2": "favicon・icon・apple-icon それぞれの形を、四角・角丸・円形から選びます。",
+    "step3": "背景が透過している画像なら、背景色を決めます。favicon だけは透過のまま出すこともできます。",
+    "step4": "ダウンロードを押すと、4つのファイルが入った icons.zip が手に入ります。"
+  },
   "App": {
     "background": "背景色",
     "download": "ダウンロード",
@@ -32,8 +46,8 @@
     "copyTitle": "ホーム画面に追加"
   },
   "Metadata": {
-    "description": "OGP Image Generator は、OGP画像・favicon・PWAアイコンを1枚の画像から一括生成できる無料ツールです。円形・角丸・背景色の調整にも対応しています。",
-    "title": "OGP画像ジェネレーター｜favicon・PWAアイコンを1枚から一括生成"
+    "description": "favicon と PWA 用アイコンを、画像1枚からまとめて作れる無料ツールです。四角・角丸・円形と背景色を選べます。変換はブラウザの中だけで行います。",
+    "title": "OGP Image Generator｜favicon・PWAアイコンを1枚から一括生成"
   },
   "OgImage": {
     "tagline": "OGP画像もアイコンもブラウザだけで作る"

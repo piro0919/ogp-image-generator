@@ -22,7 +22,12 @@ const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
 });
 
-export default function App(): React.JSX.Element {
+export type AppProps = {
+  // 説明文はサーバーで描くのでここへ差し込む。ドロップ枠の上に置く
+  children: React.ReactNode;
+};
+
+export default function App({ children }: AppProps): React.JSX.Element {
   const t = useTranslations("App");
   const { imageUrl, setImageUrl } = useImageStore();
   const onDrop = useCallback(
@@ -155,6 +160,7 @@ export default function App(): React.JSX.Element {
   return (
     <>
       <div className={styles.container}>
+        {children}
         <div {...getRootProps()} className={styles.dropzone}>
           <input aria-label={t("fileInput")} {...getInputProps()} />
           <p className={styles.dropzoneText}>{t("dropzone")}</p>

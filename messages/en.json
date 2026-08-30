@@ -1,4 +1,18 @@
 {
+  "About": {
+    "title": "About this tool",
+    "summary": "Drop in one image and it builds a favicon and the PWA icons together, then hands them back as icons.zip. Everything is converted in the browser, so the image is never uploaded anywhere.",
+    "filesTitle": "What you get",
+    "file1": "favicon.ico (256px)",
+    "file2": "icon-192x192.png",
+    "file3": "icon-512x512.png",
+    "file4": "apple-icon.png (180px)",
+    "stepsTitle": "How to use it",
+    "step1": "Drop in one image, ideally close to square. Anything else is cropped to a square from the centre.",
+    "step2": "Pick a shape for the favicon, the icon and the apple-icon: square, round or circle.",
+    "step3": "If the image has a transparent background, choose a background colour. The favicon alone can stay transparent.",
+    "step4": "Press download and you get icons.zip with the four files inside."
+  },
   "App": {
     "background": "BG Color",
     "download": "Download",
@@ -32,7 +46,7 @@
     "copyTitle": ""
   },
   "Metadata": {
-    "description": "OGP Image Generator is a free tool to generate OGP images, favicons, and PWA icons from a single image. Customize shape and background easily.",
+    "description": "A free tool that turns one image into a favicon and the PWA icons at once. Pick square, round or circle and a background colour. Everything is converted in your browser.",
     "title": "OGP Image Generator"
   },
   "OgImage": {
