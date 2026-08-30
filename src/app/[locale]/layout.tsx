@@ -30,8 +30,11 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
   const APP_NAME = "OGP ImgGen";
-  const APP_DEFAULT_TITLE = "OGP Image Generator";
-  const APP_TITLE_TEMPLATE = "%s - OGP Image Generator";
+  // 日本語で探す人は「OGP画像」と打つ。title を英語のままにすると ja が拾われない。
+  const APP_DEFAULT_TITLE = t("title");
+  const APP_TITLE_TEMPLATE = `%s - ${APP_DEFAULT_TITLE}`;
+  // ホーム画面に並ぶ名前は言語で変えない。入れ直しになる
+  const APP_INSTALLED_TITLE = "OGP Image Generator";
   const APP_DESCRIPTION = t("description");
   const path = localePath(locale);
 
@@ -45,7 +48,7 @@ export async function generateMetadata({
     appleWebApp: {
       capable: true,
       statusBarStyle: "default" as const,
-      title: APP_DEFAULT_TITLE,
+      title: APP_INSTALLED_TITLE,
       // startUpImage: [],
     },
     applicationName: APP_NAME,
