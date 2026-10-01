@@ -3,7 +3,7 @@
     "title": "このツールについて",
     "summary": "画像を1枚ドロップすると、favicon と PWA 用のアイコンをまとめて作り、icons.zip としてダウンロードできます。変換はすべてブラウザの中で行うので、画像はどこにも送信されません。",
     "filesTitle": "作られるファイル",
-    "file1": "favicon.ico（256px）",
+    "file1": "favicon.ico（16・32・48px）",
     "file2": "icon-192x192.png",
     "file3": "icon-512x512.png",
     "file4": "apple-icon.png（180px）",
@@ -30,7 +30,12 @@
       "icon": "表示崩れを避けるため、「四角」または「角丸」がおすすめです"
     },
     "transparent": "背景透過",
-    "fileInput": "画像ファイルを選ぶ"
+    "fileInput": "画像ファイルを選ぶ",
+    "error": {
+      "generate": "アイコンを作れませんでした。別の画像で試してください。",
+      "load": "この画像を読み込めませんでした。壊れているか、ブラウザが開けない形式の可能性があります。",
+      "unsupported": "このファイルには対応していません。PNG・JPEG・WebP の画像をドロップしてください。"
+    }
   },
   "Header": {
     "install": "アプリをインストール",

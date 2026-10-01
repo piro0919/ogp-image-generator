@@ -3,7 +3,7 @@
     "title": "About this tool",
     "summary": "Drop in one image and it builds a favicon and the PWA icons together, then hands them back as icons.zip. Everything is converted in the browser, so the image is never uploaded anywhere.",
     "filesTitle": "What you get",
-    "file1": "favicon.ico (256px)",
+    "file1": "favicon.ico (16, 32, 48px)",
     "file2": "icon-192x192.png",
     "file3": "icon-512x512.png",
     "file4": "apple-icon.png (180px)",
@@ -30,7 +30,12 @@
       "icon": "For best compatibility, we recommend using “Square” or “Round”."
     },
     "transparent": "Transparent BG",
-    "fileInput": "Choose an image file"
+    "fileInput": "Choose an image file",
+    "error": {
+      "generate": "Could not create the icons. Try a different image.",
+      "load": "Could not read this image. It may be damaged or in a format the browser cannot open.",
+      "unsupported": "This file is not supported. Drop a PNG, JPEG or WebP image."
+    }
   },
   "Header": {
     "install": "Install the app",

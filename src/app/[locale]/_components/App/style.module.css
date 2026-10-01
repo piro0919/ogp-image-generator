@@ -33,6 +33,16 @@
   font-weight: 700;
 }
 
+.error {
+  color: #d32f2f;
+  font-size: 1.4rem;
+  font-weight: 700;
+
+  [data-theme="dark"] & {
+    color: #ef9a9a;
+  }
+}
+
 .section {
   background: var(--background);
   border: 1px solid hsl(from var(--background) h s calc(l - 42));
