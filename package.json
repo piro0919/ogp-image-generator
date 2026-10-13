@@ -2,7 +2,7 @@
   "dependencies": {
     "@djthoms/pretty-checkbox": "3.1.0",
     "@mpth/react-no-ssr": "1.0.1",
-    "@serwist/next": "9.5.12",
+    "@serwist/next": "9.5.13",
     "@t3-oss/env-nextjs": "0.13.11",
     "@uiw/react-color": "2.10.3",
     "@vercel/analytics": "2.0.1",
@@ -64,7 +64,7 @@
     "lefthook": "2.1.10",
     "prettier": "3.9.6",
     "secretlint": "11.7.1",
-    "serwist": "9.5.12",
+    "serwist": "9.5.13",
     "stylelint": "16.26.1",
     "stylelint-config-css-modules": "4.6.0",
     "stylelint-config-recommended": "16.0.0",
